@@ -1,2 +1,2 @@
 # AWS-IAM-Policies
-A collection of IAM policies.
+A collection of AWS IAM policies.
