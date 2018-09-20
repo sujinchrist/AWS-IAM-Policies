@@ -1,0 +1,37 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "AllowEveryoneToSeeBucketListInTheConsole",
+            "Effect": "Allow",
+            "Action": [
+                "s3:ListAllMyBuckets",
+                "s3:GetBucketLocation"
+            ],
+            "Resource": "arn:aws:s3:::*"
+        },
+        {
+            "Sid": "AllowAllS3ActionsInUserFolder",
+            "Effect": "Allow",
+            "Action": "s3:*",
+            "Resource": [
+                "arn:aws:s3:::poc-common-user/${aws:username}/*"
+            ]
+        },
+        {
+            "Sid": "AllowListingOfUserFolder",
+            "Effect": "Allow",
+            "Action": "s3:ListBucket",
+            "Resource": "arn:aws:s3:::poc-common-user",
+            "Condition": {
+                "StringLike": {
+                    "s3:prefix": [
+                        "",
+                        "${aws:username}/",
+                        "${aws:username}/*"
+                    ]
+                }
+            }
+        }
+    ]
+}
