@@ -1,0 +1,18 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "RestrictAccesstoSpecificUsers",
+            "Effect": "Deny",
+            "NotPrincipal": {
+                "AWS": [
+                    "arn:aws:iam::<account-ID>:user/Alice",
+                    "arn:aws:iam::<account-ID>:user/Bob"
+                    
+                ]
+            },
+            "Action": "s3:*",
+            "Resource": "arn:aws:s3:::<bucket-name>"
+        }
+    ]
+}
