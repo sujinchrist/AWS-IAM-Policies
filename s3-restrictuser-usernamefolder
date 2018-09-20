@@ -15,14 +15,14 @@
             "Effect": "Allow",
             "Action": "s3:*",
             "Resource": [
-                "arn:aws:s3:::poc-common-user/${aws:username}/*"
+                "arn:aws:s3:::<bucket-name>/${aws:username}/*"
             ]
         },
         {
             "Sid": "AllowListingOfUserFolder",
             "Effect": "Allow",
             "Action": "s3:ListBucket",
-            "Resource": "arn:aws:s3:::poc-common-user",
+            "Resource": "arn:aws:s3:::<bucket-name>",
             "Condition": {
                 "StringLike": {
                     "s3:prefix": [
